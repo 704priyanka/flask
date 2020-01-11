@@ -97,7 +97,7 @@ def weather(city, state):
 
     weather_info = {'temperature': temperature, 'rain': rain_commentary}
     return render_template(
-        'weather.html',
+        'index.html',
         location=location,
         weather_info=weather_info,
         weather_icon=weather_icon
