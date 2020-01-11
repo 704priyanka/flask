@@ -13,14 +13,14 @@ def location():
     if (session and session['ip_info']):
         data = session['ip_info']
         return redirect(
-            url_for('weather', city=data['city'], state=data['state'])
+            url_for('index', city=data['city'], state=data['state'])
         )
     else:
         data = get_ip_info()
         if data['success']:
             session['ip_info'] = data
             return redirect(
-                url_for('weather', city=data['city'], state=data['state'])
+                url_for('index', city=data['city'], state=data['state'])
             )
         else:
             return redirect(url_for('error_page'))
@@ -34,8 +34,8 @@ def celsius():
     return ""
 
 
-@app.route('/weather/<city>/<state>')
-def weather(city, state):
+@app.route('/index/<city>/<state>')
+def index(city, state):
     weather_key = os.environ['weather_key']
 
     if 'ip_info' in session:
